@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Todo</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h1 class="text-center">Edit Todo</h1>
+    
+    <!-- Form untuk mengedit todo -->
+    <form action="/edit/{{ todo.id }}" method="POST">
+        <div class="form-group">
+            <label for="title">Judul Todo:</label>
+            <input type="text" id="title" name="title" class="form-control" value="{{ todo.title }}" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+        <a href="/" class="btn btn-secondary">Kembali ke Daftar Todo</a>
+    </form>
+</div>
+
+<div class="footer">
+    <p>&copy; 2024 Todo App</p>
+</div>
+
+</body>
+</html>

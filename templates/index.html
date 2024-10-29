@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h1 class="text-center">Daftar Todo</h1>
+
+    <!-- Tombol untuk menambah todo baru -->
+    <div class="text-right mb-3">
+        <a href="/create" class="btn btn-primary">Tambah Todo Baru</a>
+    </div>
+
+    <!-- Daftar Todo -->
+    <ul class="list-group">
+        {% for todo in todos %}
+            <li class="list-group-item todo-item {% if todo.completed %}completed{% endif %}">
+                <span>{{ todo.title }}</span>
+                <div>
+                    <a href="/edit/{{ todo.id }}" class="btn btn-warning btn-custom">Edit</a>
+                    <a href="/delete/{{ todo.id }}" class="btn btn-danger btn-custom" onclick="return confirm('Hapus todo ini?')">Hapus</a>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+
+<div class="footer">
+    <p>&copy; 2024 Todo App</p>
+</div>
+
+</body>
+</html>
